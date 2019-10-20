@@ -7,8 +7,8 @@ from sqlalchemy import create_engine
 VIEW_ID = creds.pb_viewid
 
 ## sessions
-start_date = '2019-09-06'
-end_date = '2019-10-18'
+start_date = '2019-10-19'
+end_date = '2019-10-19'
 
 # note that at the time of building this script the timestamp dimension, dimension3, was only granular at the second level.
 # Updated this variable in GTM today (10/19/19) to set at the millisecond level as an ISO string, including timezone.
