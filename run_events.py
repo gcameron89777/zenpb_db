@@ -169,7 +169,7 @@ events_combined = events1.merge(events2.drop(['ga:totalEvents', 'sampling'], axi
 # some leading or trailing whitespace on some fields causing dups
 # remove leading or trailing whitespace then dedup
 events_combined = events_combined.apply(lambda x: x.str.strip() if x.dtype == "object" else x)
-events_combined.fillna('na', inplace=True)
+events_combined.fillna('na', inplace = True)
 events_combined = events_combined.drop_duplicates()
 
 ## Get fields in order

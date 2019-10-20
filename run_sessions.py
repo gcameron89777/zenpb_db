@@ -97,6 +97,7 @@ sessions_combined = sessions1.merge(sessions2.drop(['ga:sessions', 'sampling'], 
 # on second thought leave in, want to match interface and can always filter in sql
 # on third thought put it back in because session id is the key and leaving it out causes issues
 sessions_combined = sessions_combined[sessions_combined['ga:sessions'] > 0]
+sessions_combined.fillna('na', inplace = True) # replace NaNs wit 'na' if any
 
 ## Get fields in order
 sessions_ordered = ['ga:dimension1',
