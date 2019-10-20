@@ -4,11 +4,11 @@ import credentials as creds
 import psycopg2
 from sqlalchemy import create_engine
 
-VIEW_ID = '197744684' # PB prod
+VIEW_ID = creds.pb_viewid
 
 ## sessions
 start_date = '2019-09-01'
-end_date = '2019-09-30'
+end_date = '2019-10-18'
 
 
 # common session dims and all metrics
@@ -94,6 +94,8 @@ sessions_combined = sessions1.merge(sessions2.drop(['ga:sessions', 'sampling'], 
                                                        how = 'inner')
 
 # dedup sessions. Pulling in hour and minute seems to cause duplicates, filtering out where sessions = 0 seems to match GA UI
+# on second thought leave in, want to match interface and can always filter in sql
+# on third thought put it back in because session id is the key and leaving it out causes issues
 sessions_combined = sessions_combined[sessions_combined['ga:sessions'] > 0]
 
 ## Get fields in order
@@ -169,7 +171,7 @@ engine = create_engine('postgresql://' +
 # post to sessions table
 sessions_combined.to_sql('sessions',
                          con = engine,
-                         schema = 'google_analytics',
+                         schema = 'ga_photo_booker',
                          index = False,
                          if_exists = 'append')
 
