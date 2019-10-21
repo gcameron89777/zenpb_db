@@ -7,8 +7,8 @@ from sqlalchemy import create_engine
 VIEW_ID = creds.pb_viewid
 
 ## sessions
-start_date = '2019-09-01'
-end_date = '2019-10-19'
+start_date = '2019-10-20'
+end_date = '2019-10-20'
 
 # base dims and all metrics
 transactions = return_ga_data(
@@ -30,7 +30,7 @@ transactions = return_ga_data(
     {'name': 'ga:transactionId'}
   ],
   group_by = ['ga:dimension1', 'ga:dimension3', 'ga:dimension4', 'ga:transactionId'],
-  dimensionFilterClauses = [],
+  dimensionFilterClauses=[],
   segments=[]
 )
 

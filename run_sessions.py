@@ -7,8 +7,8 @@ from sqlalchemy import create_engine
 VIEW_ID = creds.pb_viewid
 
 ## sessions
-start_date = '2019-10-19'
-end_date = '2019-10-19'
+start_date = '2019-10-20'
+end_date = '2019-10-20'
 
 
 # common session dims and all metrics

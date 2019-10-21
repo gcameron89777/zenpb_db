@@ -3,6 +3,7 @@ import connect
 from datetime import datetime
 import time
 from dateutil.rrule import rrule, DAILY
+import sys
 
 
 def convert_response_to_df(response):
@@ -80,6 +81,11 @@ def return_ga_data(start_date, end_date, view_id, metrics, dimensions, group_by=
             time.sleep(1)
 
             iresponse = get_report(date, date, view_id, metrics, dimensions, dimensionFilterClauses, segments, pageToken=page_token)
+
+            # make sure there are results else quit
+            if 'rowCount' not in iresponse['reports'][0]['data']:
+                sys.exit(0)
+
             i_df = convert_response_to_df(iresponse)
             final_list.append(i_df)
             page_token = iresponse['reports'][0].get('nextPageToken')  # update the pageToken
