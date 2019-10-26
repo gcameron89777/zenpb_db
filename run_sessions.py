@@ -5,10 +5,8 @@ import psycopg2
 from sqlalchemy import create_engine
 
 VIEW_ID = creds.pb_viewid
-
-## sessions
-start_date = '2019-10-20'
-end_date = '2019-10-20'
+start_date = creds.start_date
+end_date = creds.end_date
 
 
 # common session dims and all metrics

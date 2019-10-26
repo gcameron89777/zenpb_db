@@ -5,10 +5,8 @@ import psycopg2
 from sqlalchemy import create_engine
 
 VIEW_ID = creds.pb_viewid
-
-## sessions
-start_date = '2019-10-20'
-end_date = '2019-10-20'
+start_date = creds.start_date
+end_date = creds.end_date
 
 # note that at the time of building this script the timestamp dimension, dimension3, was only granular at the second level.
 # Updated this variable in GTM today (10/19/19) to set at the millisecond level as an ISO string, including timezone.
