@@ -32,6 +32,10 @@ transactions = return_ga_data(
   segments=[]
 )
 
+# in case no results, leave
+if transactions.shape[0] == 0:
+    sys.exit(0)
+
 transactions.fillna('na', inplace = True)
 
 trans_ordered = [

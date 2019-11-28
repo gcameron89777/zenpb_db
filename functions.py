@@ -84,7 +84,7 @@ def return_ga_data(start_date, end_date, view_id, metrics, dimensions, group_by=
 
             # make sure there are results else quit
             if 'rowCount' not in iresponse['reports'][0]['data']:
-                sys.exit(0)
+                pass
 
             i_df = convert_response_to_df(iresponse)
             final_list.append(i_df)
@@ -92,6 +92,6 @@ def return_ga_data(start_date, end_date, view_id, metrics, dimensions, group_by=
 
     final_df = pd.concat(final_list)
 
-    if len(group_by) != 0:
+    if len(group_by) != 0 and final_df.shape[0] > 0:
         final_df = final_df.groupby(group_by).sum().reset_index()
     return final_df
